@@ -1,0 +1,9 @@
+{
+  "$schema": "../gen/schemas/capabilities.json",
+  "identifier": "default",
+  "description": "Default capability for DailyStack",
+  "windows": ["main"],
+  "permissions": [
+    "core:default"
+  ]
+}
