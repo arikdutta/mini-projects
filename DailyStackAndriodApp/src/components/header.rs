@@ -8,8 +8,8 @@ pub fn Header() -> impl IntoView {
 
     view! {
         <header class="border-b bg-card">
-            <div class="px-4 pt-4 pb-1">
-                <span class="text-xl font-bold tracking-tight">"Arik Daily Stack App"</span>
+            <div class="px-4 pt-4 pb-1 text-center">
+                <span class="text-3xl font-bold tracking-tight text-white [-webkit-text-stroke:1px_#a855f7]">"Arik Daily Stack App"</span>
             </div>
             <Navbar>
                 <MenuLink href="/" active_path="/">"Dashboard"</MenuLink>
