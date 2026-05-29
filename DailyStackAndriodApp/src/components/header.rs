@@ -4,10 +4,13 @@ use leptos_ui::clx;
 
 #[component]
 pub fn Header() -> impl IntoView {
-    clx! {Navbar, nav, "flex gap-2 p-4 border-b bg-card flex-wrap items-center"}
+    clx! {Navbar, nav, "flex gap-2 px-4 pb-3 flex-wrap items-center"}
 
     view! {
-        <header>
+        <header class="border-b bg-card">
+            <div class="px-4 pt-4 pb-1">
+                <span class="text-xl font-bold tracking-tight">"Arik Daily Stack App"</span>
+            </div>
             <Navbar>
                 <MenuLink href="/" active_path="/">"Dashboard"</MenuLink>
                 <MenuLink href="/news?category=tech" active_path="/news">"News"</MenuLink>
@@ -36,11 +39,14 @@ pub fn MenuLink(
         if active_path == "/" { path == "/" } else { path.starts_with(active_path) }
     });
 
+    let class = move || {
+        let base = "py-2 px-4 rounded-md bg-accent hover:bg-accent/80 transition-colors text-sm touch-manipulation";
+        if is_active.get() { format!("{base} font-bold") } else { base.to_string() }
+    };
+
     view! {
-        <A class:font-bold=move || is_active.get() href=href>
-            <span class="py-2 px-4 rounded-md bg-accent hover:bg-accent/80 transition-colors text-sm">
-                {children()}
-            </span>
+        <A href=href attr:class=class>
+            {children()}
         </A>
     }
 }
