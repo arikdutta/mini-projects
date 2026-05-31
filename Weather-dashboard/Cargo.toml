@@ -1,0 +1,61 @@
+[workspace]
+resolver = "2"
+members = ["app", "server"]
+
+
+[profile.dev]
+debug = false
+panic = "abort"
+incremental = true
+codegen-units = 256
+overflow-checks = false
+
+[profile.dev.build-override]
+opt-level = 3
+codegen-units = 1
+
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = 'z'
+
+
+[workspace.dependencies]
+leptos_ui = "0.3"
+
+axum = "0.8"
+cfg-if = "1"
+console_error_panic_hook = "0.1"
+console_log = "1"
+http = "1"
+leptos = { version = "0.8", features = ["nightly"] }
+leptos_axum = "0.8"
+leptos_meta = "0.8"
+leptos_router = { version = "0.8", features = ["nightly"] }
+log = "0.4"
+reqwest = { version = "0.12", features = ["json"] }
+serde = { version = "1", features = ["derive"] }
+thiserror = "2"
+tokio = { version = "1", default-features = false, features = ["macros", "rt-multi-thread"] }
+tower = { version = "0.5", default-features = false, features = ["util"] }
+tower-http = { version = "0.6", default-features = false, features = ["fs", "trace"] }
+tw_merge = { version = "0.1", features = ["variant", "debug"] }
+wasm-bindgen = "0.2"
+
+
+[[workspace.metadata.leptos]]
+name = "weather_dashboard"
+bin-package = "server"
+lib-package = "app"
+site-root = "target/site"
+site-pkg-dir = "pkg"
+tailwind-input-file = "style/tailwind.css"
+assets-dir = "public"
+site-addr = "127.0.0.1:3000"
+reload-port = 3001
+browserquery = "defaults"
+bin-features = []
+bin-default-features = false
+lib-features = ["hydrate"]
+lib-default-features = false
