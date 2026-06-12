@@ -11,7 +11,7 @@ use resend_rs::Resend;
 use std::path::PathBuf;
 
 #[derive(Parser)]
-#[command(name = "resend-demo", about = "Send emails with Resend from Rust")]
+#[command(name = "send-email-demo", about = "Send emails with Resend from Rust")]
 struct Cli {
     #[command(subcommand)]
     command: Command,
@@ -26,7 +26,7 @@ enum Command {
         to: String,
 
         /// Sender address (use onboarding@resend.dev for testing)
-        #[arg(long, default_value = "Test App <onboarding@mail.rustfinance.com>")]
+        #[arg(long, default_value = "Test App <test@mail.rustfinance.com>")]
         from: String,
 
         /// Subject line
